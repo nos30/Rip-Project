@@ -19,3 +19,34 @@ button {
   border-radius: 0.25rem;
   outline: none;
 }
+
+.word{
+  font-size: 2rem;
+  user-select: none;
+}
+
+.wrapper-1{
+  height: 100vh;
+  background: hotpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1{
+    font-size: 6rem;
+    text-align: center;
+  }
+}
+
+.wrapper-2{
+  height: 100vh;
+  background: yellowgreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1{
+    font-size: 6rem;
+    text-align: center;
+  }
+}
