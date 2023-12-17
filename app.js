@@ -1,4 +1,4 @@
-
+import { interval} from 'rxjs'
 
 function getWordsList(letter) {
     const words = {
@@ -56,5 +56,7 @@ charsRef.forEach(char => {
    const charId = char.id.slice(0, 1);
     char.addEventListener('click', (e) => {
         changeWord(charId);
+
+
     })
 });
