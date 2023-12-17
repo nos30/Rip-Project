@@ -1,4 +1,4 @@
-import { interval} from 'rxjs'
+import { interval } from 'rxjs'
 
 function getWordsList(letter) {
     const words = {
