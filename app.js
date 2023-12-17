@@ -3,29 +3,29 @@
 function getWordsList(letter) {
     const words = {
         mWords: [
-            'mangeurs de',
-            'Maître des ',
-            'Mystérieux ',
-            'Maraudeur ',
-            'Mélangeur ',
-            'Majestueux ',
-            'Moustachu ',
-            'Médiateur',
-            'Merveilleux ',
-            'Méticuleux ',
-            'Magicien'
+            'Mélangeur de',
+            'Ménageur de',
+            'Mangeur de',
+            'Manipulateur de',
+            'Marchandeur de',
+            'Malfaiteur de',
+            'Malentendeur de',
+            'Marmonneur de',
+            'Mordilleur de',
+            'Monnayeur de',
+            'Modulateur de',
+            'Machouilleur de',
         ],
         gWords: [
             'Grosse ',
+            'Gigantesque',
             'Gargantuesques ',
-            'Glouton de',
-            'Gourmand ',
-            'Goûts  ',
-            'Gourmet de  ',
+            'Gentille',
+            'Gracieuse ',
+            'Généreuse  ',
+            'Glorieuse ',
             'Grandiose  ',
-            'Gourmand ',
-            'Gobe-tout ',
-            'Glouton  '
+            'Gourmande ',
         ],
         bWords: [
             'boules'
@@ -48,17 +48,13 @@ function changeWord(letter) {
     wordRef.textContent = spliceWord;
 }
 
-const mCharRef = document.getElementById('m-char');
-mCharRef.addEventListener('click', (e) => {
-    changeWord('m');
-})
+const charsRef = Array.from(document.getElementsByClassName('char'));
 
-const gCharRef = document.getElementById('g-char');
-gCharRef.addEventListener('click', (e) => {
-    changeWord('g'); 
-})
+// Start 🚀 !
 
-const bCharRef = document.getElementById('b-char');
-bCharRef.addEventListener('click', (e) => {
-    changeWord('b');
-})
+charsRef.forEach(char => {
+   const charId = char.id.slice(0, 1);
+    char.addEventListener('click', (e) => {
+        changeWord(charId);
+    })
+});
