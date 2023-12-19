@@ -1,0 +1,40 @@
+
+// Steam login Button
+.sign-steam-btn {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    .header {
+      padding: 1rem 0 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(#828282, #545454);
+  
+      span:nth-child(1) {
+        font-size: 1rem;
+      }
+  
+      span:nth-child(2) {
+        font-size: 2rem;
+        filter: drop-shadow(0 0 0.25rem #252525);
+      }
+    }
+  
+    .footer {
+      background: #252525;
+      filter: drop-shadow(0 0 0.15rem black);
+      font-size: 0.75em;
+      padding: 0.5rem;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+    }
+  }
+  
