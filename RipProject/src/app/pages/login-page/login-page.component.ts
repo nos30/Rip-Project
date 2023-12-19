@@ -1,19 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { User } from 'src/app/models/user.model'
+import {
+  initLogin,
+  resetLogin,
+  updateUser,
+} from 'src/app/stores/login/login.actions'
+import config from 'src/config'
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
+  constructor(private store: Store) {}
 
-  constructor() { }
+  onLoginClick() {
+    const userTest: User = {
+      id: 'test',
+      username: 'Jean Test',
+    }
+    this.store.dispatch(updateUser({ user: userTest }))
+  }
 
-  onLoginClick(){
-    console.log('Steam Login Click.');
+  logoutClick() {
+    this.store.dispatch(resetLogin())
+  }
+
+  sendSteamRequest() {
+    const queryParams = {}
+    const baseUrl = 'https://api.themoviedb.org/3';
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer ' + config.STEAM_API_KEY,
+      },
+    }
+
+    const url = `${baseUrl}/discover/movie?${new URLSearchParams(
+      queryParams,
+    ).toString()}`
+
+    return new Promise((resolve, reject) => {
+      fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error))
+    })
   }
 
   ngOnInit(): void {
+    this.store.dispatch(initLogin())
   }
-
 }
