@@ -10,7 +10,7 @@ export class LoginPageComponent implements OnInit {
   constructor() { }
 
   onLoginClick(){
-    console.log('Steam Login Click.')
+    console.log('Steam Login Click.');
   }
 
   ngOnInit(): void {
