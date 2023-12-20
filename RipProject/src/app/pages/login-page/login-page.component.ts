@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { User } from 'src/app/models/user.model'
+import { SteamAuthService } from 'src/app/services/steam-auth.service'
 import {
   initLogin,
   resetLogin,
@@ -14,54 +15,22 @@ import config from 'src/config'
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    private steamAuthService:SteamAuthService) {}
 
   onLoginClick() {
-    const userTest: User = {
-      id: 'test',
-      username: 'Jean Test',
-    }
-    this.store.dispatch(updateUser({ user: userTest }))
+    const authUrl = this.steamAuthService.getAuthUrl();
+    window.location.href = authUrl;
   }
 
   logoutClick() {
     this.store.dispatch(resetLogin())
   }
 
-  sendSteamRequest():Promise<any> {
-    const queryParams = {
-      key:config.STEAM_CLIENT_ID,
-      steamId:'76561198043409869'
-      
-    }
-    const baseUrl = 'https://steamcommunity.com/';
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'key ' + config.STEAM_CLIENT_ID,
-      },
-    }
-
-    const client_id = '76561198043409869'
-
-    const url = `${baseUrl}oauth/login?response_type=token&client_id=${client_id}
-    ${new URLSearchParams(
-      queryParams,
-    ).toString()}`
-
-    return new Promise((resolve, reject) => {
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((data) => resolve(data))
-        .catch((error) => reject(error))
-    })
-  }
+  
 
   ngOnInit(): void {
     this.store.dispatch(initLogin());
-
-    this.sendSteamRequest();
-
   }
 }

@@ -7,6 +7,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SteamLoginBtnComponent } from './components/buttons/steam-login-btn/steam-login-btn.component';
 import { StoreModule } from '@ngrx/store';
 import { loginMetaReducers, loginReducer } from './stores/login/login.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { loginMetaReducers, loginReducer } from './stores/login/login.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot({loginReducer:loginReducer}, {metaReducers:loginMetaReducers}),
   ],
   providers: [],
