@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
 
   sendSteamRequest():Promise<any> {
     const queryParams = {
-      key:config.STEAM_API_KEY,
+      key:config.STEAM_CLIENT_ID,
       steamId:'76561198043409869'
       
     }
@@ -39,7 +39,7 @@ export class LoginPageComponent implements OnInit {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'key ' + config.STEAM_API_KEY,
+        Authorization: 'key ' + config.STEAM_CLIENT_ID,
       },
     }
 
