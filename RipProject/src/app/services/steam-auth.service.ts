@@ -7,7 +7,7 @@ import config from 'src/config';
 })
 export class SteamAuthService {
   private clientId = config.STEAM_CLIENT_ID;
-  private redirectUri = 'votre-uri-de-redirection';
+  private redirectUri = 'https://pgaillot.github.io/RiProject/';
 
   constructor(private http: HttpClient) {}
 
