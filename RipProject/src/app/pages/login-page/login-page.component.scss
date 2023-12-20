@@ -1,4 +1,32 @@
 body{
     height: 100vh;
-    background: black;
+    background: linear-gradient(black, #1a013b);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    
+    h1{
+        color: #ede6f7;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 3rem;
+        span{
+            color: #240250;
+        }
+    }
+
+    app-steam-login-btn{
+        filter: drop-shadow(0 0 2rem rgba(107, 5, 240, 0.616));
+        transition: filter 300ms ease-in-out;
+
+        &:hover{
+            filter: drop-shadow(0 0 3.5rem rgba(146, 5, 240, 0.616));
+        }
+        
+        &:active{
+            filter: drop-shadow(0 0 2rem rgba(185, 5, 240, 0.616));
+        }
+    }
+
 }

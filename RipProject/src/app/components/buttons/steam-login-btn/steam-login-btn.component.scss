@@ -6,7 +6,7 @@
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 0.5rem;
     overflow: hidden;
-    
+    user-select: none;
     .header {
       padding: 1rem 0 0.5rem 0;
       display: flex;
