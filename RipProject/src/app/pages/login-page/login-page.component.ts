@@ -28,18 +28,25 @@ export class LoginPageComponent implements OnInit {
     this.store.dispatch(resetLogin())
   }
 
-  sendSteamRequest() {
-    const queryParams = {}
-    const baseUrl = 'https://api.themoviedb.org/3';
+  sendSteamRequest():Promise<any> {
+    const queryParams = {
+      key:config.STEAM_API_KEY,
+      steamId:'76561198043409869'
+      
+    }
+    const baseUrl = 'https://steamcommunity.com/';
     const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer ' + config.STEAM_API_KEY,
+        Authorization: 'key ' + config.STEAM_API_KEY,
       },
     }
 
-    const url = `${baseUrl}/discover/movie?${new URLSearchParams(
+    const client_id = '76561198043409869'
+
+    const url = `${baseUrl}oauth/login?response_type=token&client_id=${client_id}
+    ${new URLSearchParams(
       queryParams,
     ).toString()}`
 
@@ -52,6 +59,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(initLogin())
+    this.store.dispatch(initLogin());
+
+    this.sendSteamRequest();
+
   }
 }
